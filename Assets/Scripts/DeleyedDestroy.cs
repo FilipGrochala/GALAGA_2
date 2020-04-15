@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DeleyedDestroy : MonoBehaviour
 {
-        public float deley = 5f;
+        public float deley = 4f;
         void Start()
         {
             Destroy(gameObject, deley);
