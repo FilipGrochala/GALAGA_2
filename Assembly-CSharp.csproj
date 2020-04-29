@@ -59,6 +59,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\Enemy.cs" />
     <Compile Include="Assets\Scripts\Entity.cs" />
+    <Compile Include="Assets\Scripts\Formation.cs" />
     <Compile Include="Assets\Scripts\GUI.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
     <Compile Include="Assets\Scripts\ShootingMechanics\BasicEnemyGun.cs" />

@@ -4,7 +4,13 @@ using UnityEngine;
 
 public class BasicEnemyGun : Gun
 {
-    System.Random random = new System.Random();
+    [SerializeField]
+    float minDuration = 1;
+    [SerializeField]
+    float maxDuration = 5;
+    
+
+    
 
     void Start()
     {
@@ -13,9 +19,11 @@ public class BasicEnemyGun : Gun
 
     IEnumerator ShootByTime()
     {
+        System.Random random = new System.Random();
+
         while (true)
         {
-            float time = (float)(random.NextDouble() * (2 - 0.3) + 0.3);
+            float time = (float)(random.NextDouble() * (maxDuration - minDuration) + minDuration);
             ShootBullet();
             yield return new WaitForSeconds(time);
         }
