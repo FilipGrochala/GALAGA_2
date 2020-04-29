@@ -9,6 +9,10 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField]
     int value = 1;
+    [SerializeField]
+    int speed=10;
+
+    public int Speed { get => speed; set => speed = value; }
 
     bool canShoot;
 
@@ -37,6 +41,8 @@ public class Enemy : MonoBehaviour
 
         }
     }
+
+  
 
     void Start()
     {

@@ -54,6 +54,12 @@ public class Player : MonoBehaviour
         if (transform.position.y > 4)
             rigidbody.position = new Vector2(transform.position.x, 4);
 
+        if (transform.position.x < -10)
+            rigidbody.position = new Vector2(-10, transform.position.y);
+
+        if (transform.position.x > 10)
+            rigidbody.position = new Vector2(10, transform.position.y);
+
 
     }
    

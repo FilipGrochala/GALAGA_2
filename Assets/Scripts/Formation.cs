@@ -25,13 +25,14 @@ public class Formation : MonoBehaviour
 
     void Update()
     {
-        if(!enemies.Any())  //jeżeli formacja jest pusta zniszcz ją
+    
+
+        if (!enemies.Any())  //jeżeli formacja jest pusta zniszcz ją
         {
             Destroy(gameObject);
         }
-        Debug.Log(enemies[0].CanShoot);
-        Debug.Log(enemies[1].CanShoot);
-        Debug.Log(enemies[2].CanShoot);
+        Debug.Log(transform.position.x);
+        Debug.Log(transform.position.y);
     }
 
     IEnumerator WhoCanShoot()

@@ -64,6 +64,8 @@ GameObject:
   - component: {fileID: 5056637414536470651}
   - component: {fileID: 5056637414536470644}
   - component: {fileID: 5056637414536470645}
+  - component: {fileID: 1045433602674810974}
+  - component: {fileID: 6511330681783456941}
   m_Layer: 0
   m_Name: BasicAlien 1
   m_TagString: Untagged
@@ -143,7 +145,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5056637414536470640}
-  m_BodyType: 2
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -182,6 +184,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   value: 1
+  speed: 5
 --- !u!60 &5056637414536470645
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -218,3 +221,37 @@ PolygonCollider2D:
       - {x: 0.23170878, y: -0.040723324}
       - {x: 0.20438018, y: 0.20050162}
       - {x: 0.038033776, y: 0.47696775}
+--- !u!114 &1045433602674810974
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5056637414536470640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50059fd6c24de534b8b3209940c950fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BulletPrefab: {fileID: 0}
+  BulletSpeed: 2
+  GunPosition: {x: 0, y: 0}
+  shootDown: 0
+  minDuration: 1
+  maxDuration: 5
+--- !u!114 &6511330681783456941
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5056637414536470640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b515df5c6c3dca64db1a87e4c352259a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxX: 3
+  maxY: 2
+  minX: -3
+  minY: -1
