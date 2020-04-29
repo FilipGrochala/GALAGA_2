@@ -644,6 +644,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxValue: 3
+  brake: 1
   enemies:
   - {fileID: 199923581}
   - {fileID: 981331759}

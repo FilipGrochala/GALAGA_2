@@ -10,23 +10,22 @@ public class BasicEnemyGun : Gun
     float maxDuration = 5;
     
 
-    
-
     void Start()
     {
-        StartCoroutine(ShootByTime());
+        transform.GetComponentInParent<Enemy>().onShoot += () =>
+        {
+            StartCoroutine(ShootByTime());
+        };
     }
 
     IEnumerator ShootByTime()
     {
         System.Random random = new System.Random();
-
-        while (true)
-        {
-            float time = (float)(random.NextDouble() * (maxDuration - minDuration) + minDuration);
-            ShootBullet();
-            yield return new WaitForSeconds(time);
-        }
+        float time = (float)(random.NextDouble() * (maxDuration - minDuration) + minDuration);
+        yield return new WaitForSeconds(time);
+        ShootBullet();
+        
+        
 
 
     }

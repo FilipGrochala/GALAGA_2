@@ -7,14 +7,44 @@ public class Formation : MonoBehaviour
 {
     [SerializeField]
     int maxValue = 3;
+    [SerializeField]
+    float brake = 1f;
 
     public List<Enemy> enemies = new List<Enemy>();
+
+    void Start()
+    {
+        foreach (Enemy enemy in enemies)
+            enemy.CanShoot = false;
+
+        StartCoroutine(WhoCanShoot());
+
+
+    }
+
 
     void Update()
     {
         if(!enemies.Any())  //jeżeli formacja jest pusta zniszcz ją
         {
             Destroy(gameObject);
+        }
+        Debug.Log(enemies[0].CanShoot);
+        Debug.Log(enemies[1].CanShoot);
+        Debug.Log(enemies[2].CanShoot);
+    }
+
+    IEnumerator WhoCanShoot()
+    {
+        System.Random random = new System.Random();
+
+        while (true)
+        {
+            int itCan = random.Next(0, enemies.Count());
+            enemies[itCan].CanShoot = true;
+            yield return new WaitForSeconds(brake);
+            enemies[itCan].CanShoot = false;
+
         }
     }
 

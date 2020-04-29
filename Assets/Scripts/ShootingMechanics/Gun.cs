@@ -25,9 +25,5 @@ public class Gun : MonoBehaviour
         bulletRigidbody.velocity = new Vector2(0, direction) * BulletSpeed; //nadanie prędkości
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+  
 }
