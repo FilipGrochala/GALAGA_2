@@ -16,9 +16,10 @@ public class BasicMovement : MonoBehaviour
     [SerializeField]
     float speed;
 
-    Rigidbody2D rigidbody;
+    Vector2 TargetVector;
 
-    int Seed;
+    Rigidbody2D rigidbody;
+    
     void Awake()
     {
         rigidbody = GetComponent<Rigidbody2D>();
@@ -26,7 +27,9 @@ public class BasicMovement : MonoBehaviour
     }
     void Start()
     {
-        Seed = (int)transform.position.x;
+        StartCoroutine(ChangeTarget());
+      
+      
     }
 
     void   Update()
@@ -36,14 +39,7 @@ public class BasicMovement : MonoBehaviour
 
     void RandomMove()
     {
-            System.Random random = new System.Random(Seed);
-
-            var FlyDirection = Vector3.zero;
-            float x = (float)(random.NextDouble() * (maxX - minX) + minX);
-            float y = (float)(random.NextDouble() * (maxY - minY) + minY);
-
-            FlyDirection += Vector3.up * y;
-            FlyDirection += Vector3.right * x;
+            var FlyDirection = (Vector3)TargetVector - transform.position; 
             FlyDirection = FlyDirection.normalized;
             FlyDirection *= speed;
 
@@ -54,7 +50,20 @@ public class BasicMovement : MonoBehaviour
         
     }
 
-   
+    IEnumerator ChangeTarget()
+    {
+        while (true)
+        {
+            TargetVector = new Vector2();
+            TargetVector.x = Random.Range(-12, 12);
+            TargetVector.y = Random.Range(-8, -10);
+            yield return new WaitForSeconds(Random.Range(5, 10));
+        }
+    }
+
+
+
+
     void CheckPosition(Vector3 currentDirection)
     {
         if (transform.position.y < -8)
