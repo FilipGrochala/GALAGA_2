@@ -3,19 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Gun : MonoBehaviour
+public class PlayerGun : Gun
 {
     [SerializeField]
-    GameObject BulletPrefab;
-
-    [SerializeField]
-    float BulletSpeed = 2f;
-
-    [SerializeField]
-    Vector2 GunPosition;
-
-    [SerializeField]
-    int Limit=30;
+    int Limit = 30;
 
     [SerializeField]
     float StandardDuration=3f;
@@ -45,7 +36,6 @@ public class Gun : MonoBehaviour
     public event System.Action<int> OnHeatChanged;
     
 
-
     void Start()
     {
         Heat = Limit;
@@ -56,19 +46,14 @@ public class Gun : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
-            if(Heat!=0)
+            if (Heat != 0)
+            {
                 ShootBullet();
+                Heat--;
+            }
     }
 
-    private void ShootBullet()
-    {
-        var bullet = Instantiate(BulletPrefab);
-        bullet.transform.position = transform.position + (Vector3)GunPosition;
-        var bulletRigidbody = bullet.GetComponent<Rigidbody2D>();
-        bulletRigidbody.velocity =new Vector2(0,1) * BulletSpeed;
-        Heat--;
-    }
-
+ 
     IEnumerator HeatCooldown()
     {   while (true)
         {

@@ -11,7 +11,7 @@ public class GUI : MonoBehaviour
 
     void Awake()
     {
-        FindObjectOfType<Gun>().OnHeatChanged += heat =>
+        FindObjectOfType<PlayerGun>().OnHeatChanged += heat =>
         {
             HeatCounter.text = heat.ToString();
         };
