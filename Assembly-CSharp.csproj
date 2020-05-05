@@ -57,13 +57,13 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\BasicMovement.cs" />
      <Compile Include="Assets\Scripts\Enemy.cs" />
+     <Compile Include="Assets\Scripts\EnemyGenerator.cs" />
      <Compile Include="Assets\Scripts\Entity.cs" />
      <Compile Include="Assets\Scripts\Formation.cs" />
      <Compile Include="Assets\Scripts\GUI.cs" />
      <Compile Include="Assets\Scripts\Player.cs" />
      <Compile Include="Assets\Scripts\ShootingMechanics\BasicEnemyGun.cs" />
-     <Compile Include="Assets\Scripts\ShootingMechanics\Bullet.cs" />
-     <Compile Include="Assets\Scripts\ShootingMechanics\EnemyBullet.cs" />
+     <Compile Include="Assets\Scripts\ShootingMechanics\Bullets\Bullet.cs" />
      <Compile Include="Assets\Scripts\ShootingMechanics\Gun.cs" />
      <Compile Include="Assets\Scripts\ShootingMechanics\PlayerGun.cs" />
      <None Include="Assets\Sprites\Ships\readme.txt" />

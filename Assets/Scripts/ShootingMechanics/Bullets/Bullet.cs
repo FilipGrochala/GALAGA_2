@@ -19,8 +19,11 @@ public class Bullet : MonoBehaviour
 
         if (condition)
         {
-            collision.GetComponent<Entity>().Health -= damage; //trafiono gracza lub przeciwnika
-            Destroy(gameObject);
+            if (collision.GetComponent<Entity>() != null)
+            {
+                collision.GetComponent<Entity>().Health -= damage; //trafiono gracza lub przeciwnika
+                Destroy(gameObject);
+            }
         }
 
         Destroy(gameObject, deley);

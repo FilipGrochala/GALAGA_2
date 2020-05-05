@@ -31,8 +31,7 @@ public class Formation : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        Debug.Log(transform.position.x);
-        Debug.Log(transform.position.y);
+       
     }
 
     IEnumerator WhoCanShoot()

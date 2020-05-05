@@ -15,10 +15,12 @@ public class BasicMovement : MonoBehaviour
     float minY;
     [SerializeField]
     float speed;
+  
 
+    float StartY;
     Vector2 TargetVector;
-
     Rigidbody2D rigidbody;
+    
     
     void Awake()
     {
@@ -27,27 +29,25 @@ public class BasicMovement : MonoBehaviour
     }
     void Start()
     {
+        StartY = transform.position.y;
         StartCoroutine(ChangeTarget());
       
       
     }
-
-    void   Update()
+    void Update()
     {
         RandomMove();
+        CheckPosition();
     }
+
 
     void RandomMove()
     {
             var FlyDirection = (Vector3)TargetVector - transform.position; 
-            FlyDirection = FlyDirection.normalized;
-            FlyDirection *= speed;
+            var FlyVelocity = FlyDirection.normalized * speed;
+            rigidbody.velocity = Vector3.Lerp(rigidbody.velocity, FlyVelocity, Time.deltaTime/2f);
+            //transform.right = FlyDirection;
 
-            rigidbody.velocity = Vector3.Lerp(rigidbody.velocity, FlyDirection, Time.deltaTime * 4);
-
-            CheckPosition(FlyDirection);
-        
-        
     }
 
     IEnumerator ChangeTarget()
@@ -56,32 +56,39 @@ public class BasicMovement : MonoBehaviour
         {
             TargetVector = new Vector2();
             TargetVector.x = Random.Range(-12, 12);
-            TargetVector.y = Random.Range(-8, -10);
-            yield return new WaitForSeconds(Random.Range(5, 10));
+            TargetVector.y = Random.Range(-7, 7);
+            
+            yield return new WaitForSeconds(Random.Range(3, 6));
+            
+
         }
     }
 
-
-
-
-    void CheckPosition(Vector3 currentDirection)
+    void CheckPosition()
     {
-        if (transform.position.y < -8)
+        if (transform.position.y < minY)
         {
 
-            transform.position = new Vector2(transform.position.x, 10);
+            transform.position = new Vector2(transform.position.x, minY);
 
         }
-   
-        if (transform.position.x < -12)
+
+        if (transform.position.y > maxY)
         {
-            rigidbody.position = new Vector2(12, transform.position.y);
+
+            transform.position = new Vector2(transform.position.x, maxY);
+
+        }
+
+        if (transform.position.x < minX)
+        {
+            rigidbody.position = new Vector2(minX, transform.position.y);
            
         }
 
-        if (transform.position.x > 12)
+        if (transform.position.x > maxX)
         {
-            rigidbody.position = new Vector2(-12, transform.position.y);
+            rigidbody.position = new Vector2(maxX, transform.position.y);
             
         }
 
