@@ -9,6 +9,7 @@ public class Entity : MonoBehaviour
     [SerializeField]
     int InitialHealth = 10;
 
+
     private int health;
     public int Health
     {
