@@ -14,7 +14,6 @@ public class BasicEnemyGun : Gun
     {
         transform.GetComponentInParent<Enemy>().onShoot += () =>
         {
-            Debug.Log("Utworzono event");
             StartCoroutine(ShootByTime());
         };
     }
@@ -22,7 +21,6 @@ public class BasicEnemyGun : Gun
 
     protected virtual IEnumerator ShootByTime()
     {
-        Debug.Log("Gotowy do strzału: " + GetComponentInParent<Enemy>().name);
         float time = Random.Range(minDuration, maxDuration);
         yield return new WaitForSeconds(time);
         ShootBullet();

@@ -38,7 +38,7 @@ public class Enemy : MonoBehaviour
 
             if (value == true && onShoot != null)
             {
-                Debug.Log("Event!");
+                
                 onShoot.Invoke();
                 canShoot = false;
             }

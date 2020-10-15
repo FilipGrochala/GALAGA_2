@@ -48,7 +48,6 @@ public class Formation : MonoBehaviour
     {
         int itCan = UnityEngine.Random.Range(0, enemies.Count()-1);
         enemies[itCan].CanShoot = true;
-        Debug.Log("Formacja " + gameObject.name + " ognia!");
     }
 
     public int CalculateValue()

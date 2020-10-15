@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
@@ -10,6 +11,7 @@ public class Entity : MonoBehaviour
     [SerializeField]
     int InitialHealth = 10;
 
+    Animator animator;
 
     private int health;
     public int Health
@@ -21,6 +23,15 @@ public class Entity : MonoBehaviour
 
         set
         {
+            if (animator != null)
+            {
+                if (animator.HasState(0, Animator.StringToHash("hit")))
+                {
+                    animator.SetBool("Damage", true);
+                    animator.SetBool("Damage",false);
+                }
+            }
+
             health = value;
 
             if (health <= 0)
@@ -36,6 +47,10 @@ public class Entity : MonoBehaviour
 
                 Destroy(gameObject);
             }
+
+            
+
+            
         }
     }
 
@@ -44,6 +59,7 @@ public class Entity : MonoBehaviour
     
     void Start()
     {
+        animator = GetComponent<Animator>();
         Health = InitialHealth;
     }
 }
