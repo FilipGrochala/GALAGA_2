@@ -8,24 +8,24 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     [SerializeField]
-    int value = 1;
+    int price = 1;
     [SerializeField]
     int speed=10;
 
-    public int Speed { get => speed; set => speed = value; }
-
-    bool canShoot;
+    bool canShoot = false;
 
     public event Action onShoot;
 
-    public int Value 
+    public int Speed { get => speed; set => speed = value; }
+
+    public int Price 
     { 
-        get => value; 
-        set => this.value = value; 
+        get => price; 
+        set => this.price = value; 
     
     }
-
-    public bool CanShoot 
+    
+    public bool CanShoot
     {
         get
         {
@@ -37,12 +37,14 @@ public class Enemy : MonoBehaviour
 
 
             if (value == true && onShoot != null)
+            {
+                Debug.Log("Event!");
                 onShoot.Invoke();
+                canShoot = false;
+            }
 
         }
     }
-
-  
 
     void Start()
     {
@@ -50,6 +52,7 @@ public class Enemy : MonoBehaviour
         {
             DeleteFromList();
             Destroy(gameObject,0.5f);
+    
         };
     }
 
@@ -57,5 +60,7 @@ public class Enemy : MonoBehaviour
     {
         transform.GetComponentInParent<Formation>().enemies.Remove(this);
     }
+
+   
    
 }

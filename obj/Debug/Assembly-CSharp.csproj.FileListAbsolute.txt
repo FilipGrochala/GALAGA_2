@@ -257,3 +257,6 @@ C:\Users\filip\Galaga\obj\Debug\Assembly-CSharp.csprojAssemblyReference.cache
 C:\Users\filip\Galaga\obj\Debug\Assembly-CSharp.csproj.CopyComplete
 C:\Users\filip\Galaga\obj\Debug\Assembly-CSharp.dll
 C:\Users\filip\Galaga\obj\Debug\Assembly-CSharp.pdb
+C:\Users\filip\Galaga\Temp\bin\Debug\RevDeBug.setup
+C:\Users\filip\Galaga\obj\Debug\Assembly-CSharp.csproj.CoreCompileInputs.cache
+C:\Users\filip\Galaga\obj\Debug\RdbLog.txt

@@ -5,7 +5,8 @@ using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class Entity : MonoBehaviour
-{
+{ 
+    // klasa związana z "HP" każdy obiekt posiadający "życie" musi posiadać te klase
     [SerializeField]
     int InitialHealth = 10;
 
@@ -41,8 +42,6 @@ public class Entity : MonoBehaviour
     public event Action<int>OnHealthChanged;
     public event Action OnKilled;
     
-    
-
     void Start()
     {
         Health = InitialHealth;

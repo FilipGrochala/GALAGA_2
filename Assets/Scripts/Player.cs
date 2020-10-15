@@ -4,20 +4,26 @@ using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(Entity))]
+[RequireComponent(typeof(Collider2D))]
 public class Player : MonoBehaviour
 {
     [SerializeField]
     float Speed = 3f;
+
+    [SerializeField]
+    bool destroyOnCollision = true;
 
     Rigidbody2D rigidbody;
     
     private void Awake()
     {
         rigidbody = GetComponent<Rigidbody2D>();
+       
     }
 
     void Start()
     {
+        
         GetComponent<Entity>().OnKilled += () =>
         {
             Destroy(gameObject);
@@ -59,8 +65,17 @@ public class Player : MonoBehaviour
 
         if (transform.position.x > 10)
             rigidbody.position = new Vector2(10, transform.position.y);
-
-
     }
-   
+
+   protected void OnTriggerEnter2D(Collider2D collision)
+   {
+        if (collision.GetComponent<Enemy>() != null && destroyOnCollision)
+        {
+            Destroy(gameObject);
+            Debug.Log("WYBUCH");
+        }
+            
+   }
+
+
 }

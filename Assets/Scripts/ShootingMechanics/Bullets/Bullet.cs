@@ -6,13 +6,18 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     [SerializeField]
-    int damage = 1;
+    int damage = 1; 
     [SerializeField]
-    float deley = 4f;
+    float deley = 4f; // po jakim czasie pocisk znika ze świata gry
     [SerializeField]
     bool isEnemy;
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    void Start()
+    {
+        Destroy(gameObject, deley);
+    }
+
+    protected void OnTriggerEnter2D(Collider2D collision) // jeśli trafi w jakiś obiekt 
     {
         bool condition = isEnemy ? (collision.GetComponent<Player>() != null || collision.GetComponent<Enemy>() == null) : //pocisk przeciwnika reaguje tylko na gracza
             (collision.GetComponent<Player>() == null || collision.GetComponent<Enemy>() != null); //pocisk gracza reaguje tylko na przeciwnika
@@ -22,10 +27,10 @@ public class Bullet : MonoBehaviour
             if (collision.GetComponent<Entity>() != null)
             {
                 collision.GetComponent<Entity>().Health -= damage; //trafiono gracza lub przeciwnika
-                Destroy(gameObject);
+                Destroy(gameObject); // posisk znika
             }
         }
 
-        Destroy(gameObject, deley);
+        
     }
 }
